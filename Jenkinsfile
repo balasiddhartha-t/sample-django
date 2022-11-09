@@ -27,6 +27,8 @@ pipeline {
         stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
+                  @echo off
+
                   echo DATABASE_URL='postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db' > .env
 
                   bat 'docker rm -f dummyserver'
