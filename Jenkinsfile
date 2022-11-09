@@ -16,6 +16,7 @@ pipeline {
         stage('Build') { 
             steps { 
                bat 'docker build . -t dummyimage:latest'
+               //TODO: Need to change the latest to git commit hash
             }
         }
         stage('Push to ACR'){
@@ -26,6 +27,8 @@ pipeline {
         stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
+                  bat 'docker stop dummyserver'
+                  bat 'docker run -d -p 8088:8000 --env-file .env dummyimage:latest'
              }
         }
 
