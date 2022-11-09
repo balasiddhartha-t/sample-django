@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') { 
             steps { 
-               sh 'docker build ./Dockerfile -t dummyimage:latest'
+               bat 'docker build ./Dockerfile -t dummyimage:latest'
             }
         }
         stage('Test'){
