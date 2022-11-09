@@ -18,10 +18,15 @@ pipeline {
                bat 'docker build . -t dummyimage:latest'
             }
         }
-        stage('Test'){
+        stage('Push to ACR'){
             steps {
-                 echo 'Empty'
+                 echo 'Steps to push into Container Registry'
             }
+        }
+        stage(''){
+            steps{
+                  echo 'SSH into server and start the docker container'
+             }
         }
 
     }
