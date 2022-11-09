@@ -27,8 +27,8 @@ pipeline {
         stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
-                  bat 'docker stop dummyserver'
-                  bat 'docker run -d -p 8088:8000 --env-file .env dummyimage:latest'
+                  bat 'docker rm -f dummyserver'
+                  bat 'docker run --name dummyserver -d -p 8088:8000 --env-file .env dummyimage:latest'
              }
         }
 
