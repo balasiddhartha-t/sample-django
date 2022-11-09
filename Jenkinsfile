@@ -23,7 +23,7 @@ pipeline {
                  echo 'Steps to push into Container Registry'
             }
         }
-        stage(''){
+        stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
              }
