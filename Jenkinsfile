@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') { 
             steps { 
-               bat 'docker build . -t dummyimage:latest'
+               sh 'docker build . -t dummyimage:latest'
                //TODO: Need to change the latest to git commit hash
             }
         }
@@ -31,8 +31,8 @@ pipeline {
 
                   echo 'DATABASE_URL=postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db' > .env
 
-                  bat 'docker rm -f dummyserver'
-                  bat 'docker run --name dummyserver -d -p 8088:8000 --env-file .env dummyimage:latest'
+                  sh 'docker rm -f dummyserver'
+                  sh 'docker run --name dummyserver -d -p 8088:8000 --env-file .env dummyimage:latest'
              }
         }
 
