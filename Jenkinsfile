@@ -4,6 +4,10 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    environment {
+         DATABASE_URL = 'postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db'
+      
+    }
     stages {
          stage('Clone repository') { 
             steps { 
@@ -27,8 +31,7 @@ pipeline {
         stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
-                  sh 'export DATABASE_URL="postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db"'
-
+                
                   sh 'docker rm -f dummyserver'
                   sh 'docker run --name dummyserver -d -p 8088:8000 dummyimage:latest'
              }
