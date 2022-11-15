@@ -27,9 +27,7 @@ pipeline {
         stage('Deploy the code into Server'){
             steps{
                   echo 'SSH into server and start the docker container'
-                  @echo off
-
-                  echo 'DATABASE_URL=postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db' > .env
+                  sh 'EXPORT DATABASE_URL=postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db'
 
                   sh 'docker rm -f dummyserver'
                   sh 'docker run --name dummyserver -d -p 8088:8000 --env-file .env dummyimage:latest'
