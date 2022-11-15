@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deploy the code into Server'){
             steps{
-                  echo 'SSH into server and start the docker container'
+                  echo 'SSH into server and start the docker container '
                   echo "DATABASE_URL is ${DATABASE_URL}"
                   sh 'docker rm -f dummyserver'
                   sh 'docker run --name dummyserver -d -p 8088:8000 dummyimage:latest'
