@@ -33,7 +33,7 @@ pipeline {
                   echo 'SSH into server and start the docker container'
                   echo "DATABASE_URL is ${DATABASE_URL}"
                   sh 'docker rm -f dummyserver'
-                  sh "docker run --name dummyserver -e DATABASE_URL = 'postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db' -d -p 8088:8000 dummyimage:latest"
+                  sh "docker run --name dummyserver -e DATABASE_URL='postgres://postgres:mysecretpassword@192.168.1.60:5432/postgres_db' -d -p 8088:8000 dummyimage:latest"
              }
         }
 
