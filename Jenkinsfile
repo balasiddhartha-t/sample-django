@@ -36,6 +36,10 @@ pipeline {
                   sh "docker run --name dummyserver -e DATABASE_URL='postgres://postgres:mysecretpassword@34.233.121.252:5432/postgres_db' -d -p 8089:8000 dummyimage:latest"
              }
         }
-
+        stage('Running migrations ') {
+			steps {
+				  sh 'docker exec - it dummyserver python manage.py migrate'
+			}
+		}
     }
 }
