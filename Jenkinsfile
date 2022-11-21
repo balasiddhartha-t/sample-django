@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Running migrations ') {
 			steps {
-				  sh 'docker exec - it dummyserver python manage.py migrate'
+				  sh 'docker exec -it dummyserver python manage.py migrate'
 			}
 		}
     }
